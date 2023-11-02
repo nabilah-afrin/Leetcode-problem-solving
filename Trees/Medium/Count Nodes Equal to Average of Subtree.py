@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-# leetcode daily challenge
+# leetcode daily challenge - day 04
 # 02/11/2023
 
 class Solution:
@@ -33,4 +33,4 @@ class Solution:
             return node_sum, node_count
         
         post_order(root)
-        return counter #return count after calling the function
+        return counter #return the count of nodes
