@@ -1,3 +1,6 @@
+# leetcode daily challenge - day 05
+# 03/11/2023
+
 class Solution:
     def buildArray(self, target: list[int]) -> list[str]:
         output = []
