@@ -1,4 +1,7 @@
-# each edge connects two nodes and may have a weight assigned to it. Therefore, each edge is represented by a list in the following way: [node1, node2, weight], where weight is an optional property (not required if you have an unweighted graph). As its name suggests, a list of edges stores a graph as a list of edges represented in the described way.
+# each edge connects two nodes and may have a weight assigned to it. 
+# Therefore, each edge is represented by a list in the following way: [node1, node2, weight], 
+# where weight is an optional property (not required if you have an unweighted graph). 
+# As its name suggests, a list of edges stores a graph as a list of edges represented in the described way.
 
 class EdgeListGraph(Graph):
       def __init__(self, num_of_nodes, directed=True):
