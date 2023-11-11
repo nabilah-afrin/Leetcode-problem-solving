@@ -4,30 +4,33 @@
 # As its name suggests, a list of edges stores a graph as a list of edges represented in the described way.
 
 class EdgeListGraph(Graph):
-      def __init__(self, num_of_nodes, directed=True):
-        self.m_num_of_nodes = num_of_nodes
-        self.m_nodes = []
-        # Define the type of a graph
-        self.m_directed = directed
+     #constructor: total nodes, edge list, directed or undirected
+	def __init__(self, total_nodes, edge_list, directed = True):
+		self.nodes = total_nodes
+		self.edges = [] #define the edge list
+		self.directed = directed
 
-        # A representation of a graph
-        # i.e. list of edges
-        self.m_graph = []
+	#create a method to add edge with two nodes
+	def add_edge(node1, node2, wight=1):
+		#create edge with directed
+		self.edges.append([node1,node2,wight])
 
-        # For Bovurka's algorithm
-        self.m_components = {}
-    # Add edge to a graph
-    def add_edge(self, node1, node2, weight=1):        
-        # Add the edge from node1 to node2
-        self.m_list_of_edges.append([node1, node2, weight])
-        
-        # If a graph is undirected, add the same edge,
-        # but also in the opposite direction
-        if not self.m_directed:
-            self.m_list_of_edges.append([node1, node2, weight])
+		#create edge undirected, but in opposite direction
+		if not self.directed:
+			self.edge.append([node1,node2,wight])
 
-	# Print a graph representation
-    def print_edge_list(self):
-        num_of_edges = len(self.m_list_of_edges)
-        for i in range(num_of_edges):
-            print("edge ", i+1, ": ", self.m_list_of_edges[i])
+	#show the graph as edge list
+	def print__edge_list(self):
+		num_of_edges = len(self.edge_list)
+		for i in range(num_of_edges):
+			print(f"Edge {i+1} has {self.edge_list[i])"
+graph = EdgeListGraph(5)
+graph.add_edge(0, 0, 25)
+graph.add_edge(0, 1, 5)
+graph.add_edge(0, 2, 3)
+graph.add_edge(1, 3, 1)
+graph.add_edge(1, 4, 15)
+graph.add_edge(4, 2, 7)
+graph.add_edge(4, 3, 11)
+
+graph.print_edge_list()
