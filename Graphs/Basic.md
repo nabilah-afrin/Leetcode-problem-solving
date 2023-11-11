@@ -11,61 +11,44 @@ A graph may have nodes that form a cycle; meaning, nodes that reference each oth
 
 Another characteristic specific to trees is that __every node is connected to every other node__, even if the connections are indirect. However, it’s
 possible for a graph to not be fully connected. Meaning a node might not be connected with any other nodes in a graph.
-
-# Graph Implementation
-
-<img src = "https://s3.stackabuse.com/media/articles/graphs-in-python-representing-graphs-in-code-4.png" height = "250" width = "300">
-3 types: `adjacency matrices, adjacency lists, and lists of edges.`
-
-## List of edges
-We know, each edge connects two nodes and may have a weight assigned to it.
-Therefore, each edge is represented by a list in the following way: `[node1, node2, weight]`, where weight is an optional property (not required if you have an unweighted graph). As its name suggests, a list of edges stores a graph as a list of edges represented in the described way.
-<img src = "https://s3.stackabuse.com/media/articles/graphs-in-python-representing-graphs-in-code-5.png" height = "400" width = "700">
 ```python
+# Base class for graph representation
 class Graph:
-    # Constructor
-    def __init__(self, num_of_nodes, directed=True):
-        self.m_num_of_nodes = num_of_nodes
-        self.m_directed = directed
-        
-        # Different representations of a graph
-        self.m_list_of_edges = []
-	
-    # Add edge to a graph
-    def add_edge(self, node1, node2, weight=1):        
-        # Add the edge from node1 to node2
-        self.m_list_of_edges.append([node1, node2, weight])
-        
-        # If a graph is undirected, add the same edge,
-        # but also in the opposite direction
-        if not self.m_directed:
-            self.m_list_of_edges.append([node1, node2, weight])
+    def __init__(self, num_of_nodes):
+        return
 
-	# Print a graph representation
-    def print_edge_list(self):
-        num_of_edges = len(self.m_list_of_edges)
-        for i in range(num_of_edges):
-            print("edge ", i+1, ": ", self.m_list_of_edges[i])
-graph = Graph(5)
+    def __str__(self):
+        return
 
-graph.add_edge(0, 0, 25)
-graph.add_edge(0, 1, 5)
-graph.add_edge(0, 2, 3)
-graph.add_edge(1, 3, 1)
-graph.add_edge(1, 4, 15)
-graph.add_edge(4, 2, 7)
-graph.add_edge(4, 3, 11)
-
-graph.print_edge_list()
+    def add_edge(self, node1, node2, weight):
+        return
 ```
-```yaml
-OUTPUT:
-edge  1 :  [0, 0, 25]
-edge  2 :  [0, 1, 5]
-edge  3 :  [0, 2, 3]
-edge  4 :  [1, 3, 1]
-edge  5 :  [1, 4, 15]
-edge  6 :  [4, 2, 7]
-edge  7 :  [4, 3, 11]
-```
+__Nodes__
+```python
+class Node:
+    def __init__(self, name, id=-1):
+        self.m_id = id
+        self.m_name = str(name)
 
+    def __str__(self):
+        return "node " + self.m_name
+
+    def __repr__(self):
+        return "node " + self.m_name
+
+
+    def set_id(self, id):
+        self.m_id = id
+
+    def get_id(self):
+        return self.m_id
+
+    def get_name(self):
+        return self.m_name
+
+    def __eq__(self, other):
+        return self.m_name == other.m_name
+
+    def __hash__(self):
+        return hash(self.m_name)
+```
